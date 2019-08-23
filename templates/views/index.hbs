@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+    * Last Updated: 06/07/2019
+    * Author: Gerald Downey
+-->
+
+<head>
+    <title>Chat App</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/jquery.dataTables.min.js"></script>
+    <script src="./js/dataTables.responsive.min.js"></script>
+    <script src="./js/responsive.bootstrap.min.js"></script>
+    <script src="./js/dataTables.bootstrap.min.js"></script>
+    <script src="./js/moment-with-locales.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/animate.css">
+    <link rel="stylesheet" type="text/css" href="./css/dreamscape.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.bootstrap.min.css">
+    <link rel="icon" href="./images/happy.png">
+</head>
+
+<body>
+
+    {{> header }}
+
+    <div id="main-content" class="container main-content text-center quicksand">
+        <h3 class="big-title">Chat App</h3>
+        <hr>
+        <p class="error-text" id="error"></p>
+        <form id="message-form">
+            <hr><input type="text" name="message" id="message" class="message" placeholder="Message">
+            <div class="button-bar">
+                <input id="reply-button" class="btn btn-square btn-sm btn-ghost-green" type="submit" value="SEND" />
+            </div>
+        </form>
+    </div>
+
+    {{> footer }}
+    <script src="./socket.io/socket.io.js"></script>
+    <script src="./js/chat.js"></script>
+    <script src="./js/utils.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<!--
+    * Last Updated: 06/07/2019
+    * Author: Gerald Downey
+-->
+
+<head>
+    <title>About Application</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./js/jquery-3.3.1.js"></script>
+    <script src="./js/jquery.dataTables.min.js"></script>
+    <script src="./js/dataTables.responsive.min.js"></script>
+    <script src="./js/responsive.bootstrap.min.js"></script>
+    <script src="./js/dataTables.bootstrap.min.js"></script>
+    <script src="./js/moment-with-locales.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/animate.css">
+    <link rel="stylesheet" type="text/css" href="./css/dreamscape.css">
+    <link rel="stylesheet" type="text/css" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/responsive.bootstrap.min.css">
+    <link rel="icon" href="./images/weather-icon.png">
+</head>
+
+<body>
+
+    {{> header }}
+
+    <div id="main-content" class="container main-content text-center quicksand">
+        <h3 class="big-title">About This App</h3>
+        <hr>
+        <p class="dev-paragraph" id="app-description">
+            Small weather app developed with NodeJS. Find the forecast for a location given the city,
+            state, zip code or street address. This application makes use of asynchronous calls to
+            mapbox.com and darksky.net to fetch location and weather information. Follow this link to <a target="_blank"
+                href="https://github.com/GD-Coder/nodejs-examples/tree/master/web-server" class="dev-emphasis">view the
+                code</a>.
+        </p>
+        <br><br>
+        <h3 class="med-title">Showcased Concepts</h3>
+        <hr class="blue-rule">
+        <div class="col-lg-4 col-md-4 col-sm-12 list-wrapper">
+            <p class="dev-paragraph" id="app-description">
+                <ul class="dev-list">
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">NodeJS Fundementals</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">Functional Programming</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">Error Handling</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">API Integration</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">HTML5 Templating</p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 list-wrapper">
+            <p class="dev-paragraph" id="app-description">
+                <ul class="dev-list">
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">Asynchronous Programming</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">Object Destructuring</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">Handling JSON</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">SVG Creation</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">SVG Animation</p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 list-wrapper">
+            <p class="dev-paragraph" id="app-description">
+                <ul class="dev-list">
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">Responsive Design</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">CSS3 Styling</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">UI/UX Design</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">ES6 Syntax</p>
+                    </li>
+                    <li class="dev-list-item"><i class="material-icons check-icon">check</i>
+                        <p class="list-text">Callbacks</p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+        {{!-- <h1>{{ title }}</h1> --}}
+        {{!-- <img src="./images/gd.png" style="margin-left: 2%; width: 20%;" />
+        <div id="author-description">Gerald Downey, <br> Full Stack Web Developer</div> --}}
+
+    </div>
+
+    {{> footer }}
+    <script src="./js/utils.js"></script>
+
+</body>
+
+</html>

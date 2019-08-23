@@ -1,0 +1,20 @@
+<nav id="navbar" class="navbar navbar-default">
+    <ul class="container-fluid">
+        <div id="hamburger" onclick="toggleMenu()">
+            <span class="top"></span>
+            <span class="middle"></span>
+            <span class="bottom"></span>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="dev-link"><a href="/" id="home-link"><i class="material-icons home-icon">home</i></a>
+            </li>
+            <li class="dev-link"><a href="/">Chat</a></li>
+            <li class="dev-link"><a href="/about">About</a></li>
+        </ul>
+        <div id="time">
+            <script>
+                document.write(moment().format('llll'))
+            </script>
+        </div>
+    </ul>
+</nav>
