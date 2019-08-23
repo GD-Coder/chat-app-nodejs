@@ -80,6 +80,21 @@
   transition: 500ms;
 }
 
+#location-button {
+  border: 2px solid #cc2e2e;
+  color: #cc2e2e;
+  font-size: 15px;
+  font-family: "Quicksand Bold";
+  letter-spacing: 1.1px;
+  position: relative;
+  left: 8px;
+}
+
+#location-button:hover {
+  color: white;
+  transition: 500ms;
+}
+
 .btn:not(last-child) {
   margin-right: 1em;
 }
