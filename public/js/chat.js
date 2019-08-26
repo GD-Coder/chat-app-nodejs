@@ -21,7 +21,7 @@ socket.on("serverMessage", message => {
 
 socket.on("locationMessage", location => {
   let html = Mustache.render(location + "</br>", locationTemplate)
-  messages.insertAdjacentHTML("beforeend", html)
+  messages.insertAdjacentHTML("afterstart", html)
 })
 
 messageButton.addEventListener("click", () => {})
