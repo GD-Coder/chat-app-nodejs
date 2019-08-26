@@ -44,17 +44,18 @@
                     value="LOCATION" />
             </div>
         </form>
+        <script id="message-template" type="text/html">
+            <p> {{ message }} </p>
+        </script>
+
+        <script id="location-template" type="text/html">
+            <p><a href="{{ location }}"> {{ location }} </a></p>
+        </script>
 
 
     </div>
 
-    <script id="message-template" type="text/html">
-        <div><p> {{ message }} </p></div>
-    </script>
 
-    <script id="location-template" type="text/html">
-        <div><a href="{{ location }}"> {{ location }} </a></div>
-    </script>
 
     {{> footer }}
 
