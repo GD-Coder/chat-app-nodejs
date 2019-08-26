@@ -12,7 +12,7 @@ const locationTemplate = document.querySelector("#location-template").innerHTML
 
 socket.on("userMessage", received => {
   let html = Mustache.render(received + "</br>", messageTemplate)
-  messages.innerHTML = html
+  messages.insertAdjacentHTML("afterEnd", html)
 })
 
 socket.on("serverMessage", message => {
@@ -20,10 +20,7 @@ socket.on("serverMessage", message => {
 })
 
 socket.on("locationMessage", location => {
-  let html = Mustache.render(
-    `<p><a href='${{ location }}'> ${{ location }} </a></p></br>`,
-    locationTemplate
-  )
+  let html = Mustache.render(location + "</br>", locationTemplate)
   messages.insertAdjacentHTML("afterBegin", html)
 })
 
