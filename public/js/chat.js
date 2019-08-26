@@ -1,15 +1,25 @@
 const socket = io()
 const messageButton = document.querySelector("#reply-button")
 const locationButton = document.querySelector("#location-button")
-const message = document.querySelector(".message")
+const messageInput = document.querySelector(".message")
 const form = document.querySelector("#message-form")
+const messages = document.querySelector("#messages")
+const serverMessage = document.querySelector("#server-message")
+const errorMessage = document.querySelector("#error")
 
-socket.on("broadcast", received => {
-  console.log(received)
+const messageTemplate = document.querySelector("#message-template").innerHTML
+
+socket.on("userMessage", received => {
+  const html = Mustache.render(received + "</br>", messageTemplate)
+  messages.insertAdjacentHTML("beforeend", html)
 })
 
-socket.on("serverMessage", welcome => {
-  console.log(welcome)
+socket.on("serverMessage", message => {
+  serverMessage.textContent = message
+})
+
+socket.on("locationMessage", message => {
+  serverMessage.textContent = message
 })
 
 messageButton.addEventListener("click", () => {})
@@ -17,12 +27,12 @@ messageButton.addEventListener("click", () => {})
 form.addEventListener("submit", event => {
   event.preventDefault()
   messageButton.setAttribute("disabled", "disabled")
-  socket.emit("sendMessage", message.value, error => {
-    message.value = ""
+  socket.emit("sendMessage", messageInput.value, error => {
+    messageInput.value = ""
     messageButton.removeAttribute("disabled")
-    message.focus()
+    messageInput.focus()
     if (error) {
-      return console.log(error)
+      return (errorMessage.textContent = error)
     }
     return console.log("Message delivered!")
   })
@@ -31,7 +41,8 @@ form.addEventListener("submit", event => {
 locationButton.addEventListener("click", () => {
   locationButton.setAttribute("disabled", "disabled")
   if (!navigator.geolocation) {
-    return alert("Your browser does not support geolocation...")
+    return (errorMessage.textContent =
+      "Your browser does not support geolocation...")
   }
 
   navigator.geolocation.getCurrentPosition(position => {
@@ -43,7 +54,7 @@ locationButton.addEventListener("click", () => {
       },
       () => {
         locationButton.removeAttribute("disabled")
-        return console.log("Location Shared!")
+        return (serverMessage.textContent = "Location Shared!")
       }
     )
   })

@@ -15,6 +15,8 @@
     <script src="./js/dataTables.responsive.min.js"></script>
     <script src="./js/responsive.bootstrap.min.js"></script>
     <script src="./js/dataTables.bootstrap.min.js"></script>
+    <script src="./js/mustache.min.js"></script>
+    <script src="./js/qs.min.js"></script>
     <script src="./js/moment-with-locales.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/animate.css">
     <link rel="stylesheet" type="text/css" href="./css/dreamscape.css">
@@ -30,8 +32,10 @@
 
     <div id="main-content" class="container main-content text-center quicksand">
         <h3 class="big-title">Chat App</h3>
-        <hr>
+        <p class="server-text" id="server-message"></p>
         <p class="error-text" id="error"></p>
+        <hr>
+        <div id="messages"></div>
         <form id="message-form">
             <input type="text" name="message" id="message" class="message" placeholder="Message">
             <div class="button-bar">
@@ -40,7 +44,17 @@
                     value="LOCATION" />
             </div>
         </form>
+
+
     </div>
+
+    <script id="message-template" type="text/html">
+        <div><p> {{ message }} </p></div>
+    </script>
+
+    <script id="location-template" type="text/html">
+        <div><a href="{{ location }}"></a></div>
+    </script>
 
     {{> footer }}
 

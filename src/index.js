@@ -18,12 +18,13 @@ io.on("connection", socket => {
     "serverMessage",
     `A new user has entered the room! ${userCount} users present.`
   )
+
   socket.on("sendMessage", (message, callback) => {
     const filter = new Filter()
     if (filter.isProfane(message)) {
       return callback("Profanity is not allowed...")
     }
-    socket.broadcast.emit("serverMessage", message)
+    socket.broadcast.emit("userMessage", message)
     callback()
   })
 
@@ -38,7 +39,7 @@ io.on("connection", socket => {
 
   socket.on("sendLocation", (location, callback) => {
     io.emit(
-      "serverMessage",
+      "locationMessage",
       `https://google.com/maps?q=${location.latitude},${location.longitude}`,
       callback()
     )
