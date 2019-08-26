@@ -1,5 +1,6 @@
 const socket = io()
-const button = document.querySelector("#reply-button")
+const messageButton = document.querySelector("#reply-button")
+const locationButton = document.querySelector("#location-button")
 const message = document.querySelector(".message")
 const form = document.querySelector("#message-form")
 
@@ -11,11 +12,15 @@ socket.on("serverMessage", welcome => {
   console.log(welcome)
 })
 
-button.addEventListener("click", () => {})
+messageButton.addEventListener("click", () => {})
 
 form.addEventListener("submit", event => {
   event.preventDefault()
+  messageButton.setAttribute("disabled", "disabled")
   socket.emit("sendMessage", message.value, error => {
+    message.value = ""
+    messageButton.removeAttribute("disabled")
+    message.focus()
     if (error) {
       return console.log(error)
     }
@@ -23,7 +28,8 @@ form.addEventListener("submit", event => {
   })
 })
 
-document.querySelector("#location-button").addEventListener("click", () => {
+locationButton.addEventListener("click", () => {
+  locationButton.setAttribute("disabled", "disabled")
   if (!navigator.geolocation) {
     return alert("Your browser does not support geolocation...")
   }
@@ -36,6 +42,7 @@ document.querySelector("#location-button").addEventListener("click", () => {
         longitude: position.coords.longitude
       },
       () => {
+        locationButton.removeAttribute("disabled")
         return console.log("Location Shared!")
       }
     )
