@@ -8,9 +8,10 @@ const serverMessage = document.querySelector("#server-message")
 const errorMessage = document.querySelector("#error")
 
 const messageTemplate = document.querySelector("#message-template").innerHTML
+const locationTemplate = document.querySelector("#location-template").innerHTML
 
 socket.on("userMessage", received => {
-  const html = Mustache.render(received + "</br>", messageTemplate)
+  let html = Mustache.render(received + "</br>", messageTemplate)
   messages.insertAdjacentHTML("beforeend", html)
 })
 
@@ -18,8 +19,9 @@ socket.on("serverMessage", message => {
   serverMessage.textContent = message
 })
 
-socket.on("locationMessage", message => {
-  serverMessage.textContent = message
+socket.on("locationMessage", location => {
+  let html = Mustache.render(location + "</br>", locationTemplate)
+  messages.insertAdjacentHTML("beforeend", html)
 })
 
 messageButton.addEventListener("click", () => {})
