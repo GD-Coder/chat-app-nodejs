@@ -20,7 +20,10 @@ socket.on("serverMessage", message => {
 })
 
 socket.on("locationMessage", location => {
-  let html = Mustache.render(location + "</br>", locationTemplate)
+  let html = Mustache.render(
+    `<p><a href='${{ location }}> ${{ location }} </a></p></br>`,
+    locationTemplate
+  )
   messages.insertAdjacentHTML("afterBegin", html)
 })
 
