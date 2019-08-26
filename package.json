@@ -14,6 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
+    "bad-words": "^3.0.3",
     "bcrypt": "^3.0.6",
     "express": "^4.17.1",
     "hbs": "^4.0.4",
