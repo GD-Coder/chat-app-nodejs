@@ -12,7 +12,7 @@ const locationTemplate = document.querySelector("#location-template").innerHTML
 
 socket.on("userMessage", received => {
   let html = Mustache.render(received + "</br>", messageTemplate)
-  messages.insertAdjacentHTML("afterEnd", html)
+  messages.insertAdjacentHTML("beforeEnd", html)
 })
 
 socket.on("serverMessage", message => {

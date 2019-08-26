@@ -15,8 +15,6 @@
     <script src="./js/dataTables.responsive.min.js"></script>
     <script src="./js/responsive.bootstrap.min.js"></script>
     <script src="./js/dataTables.bootstrap.min.js"></script>
-    <script src="./js/mustache.min.js"></script>
-    <script src="./js/qs.min.js"></script>
     <script src="./js/moment-with-locales.min.js"></script>
     <link rel="stylesheet" type="text/css" href="./css/animate.css">
     <link rel="stylesheet" type="text/css" href="./css/dreamscape.css">
@@ -44,12 +42,12 @@
                     value="LOCATION" />
             </div>
         </form>
-        <script id="message-template" type="text/html">
+        <script id="message-template" type="text/x-tmpl-mustache">
             <p> {{ message }} </p>
         </script>
 
-        <script id="location-template" type="text/html">
-            <p><a href='{{ location }}'> {{ location }} </a></p>
+        <script id="location-template" type="text/x-tmpl-mustache">
+            <p><a href='{{ location }}'>My current location</a></p>
         </script>
 
 
@@ -62,6 +60,8 @@
     <script src="./socket.io/socket.io.js"></script>
     <script src="./js/chat.js"></script>
     <script src="./js/utils.js"></script>
+    <script src="./js/mustache.min.js"></script>
+    <script src="./js/qs.min.js"></script>
 
 </body>
 
