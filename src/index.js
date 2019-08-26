@@ -37,9 +37,6 @@ io.on("connection", socket => {
   })
 
   socket.on("sendLocation", (location, callback) => {
-    if (error) {
-      callback("There was an error on the server... Please try again.")
-    }
     io.emit(
       "serverMessage",
       `https://google.com/maps?q=${location.latitlude},${location.longitude}`,
