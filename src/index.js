@@ -3,6 +3,7 @@ const express = require("express")
 const path = require("path")
 const hbs = require("hbs")
 require("./db/mongoose")
+const { generateMessage } = require("./utils/message")
 const app = express()
 const socketio = require("socket.io")
 const http = require("http")
@@ -10,41 +11,6 @@ const server = http.createServer(app)
 const io = socketio(server)
 const Filter = require("bad-words")
 let userCount = 0
-
-io.on("connection", socket => {
-  socket.emit("serverMessage", "Welcome!")
-  userCount++
-  socket.broadcast.emit(
-    "serverMessage",
-    `A new user has entered the room! ${userCount} users present.`
-  )
-
-  socket.on("sendMessage", (message, callback) => {
-    const filter = new Filter()
-    if (filter.isProfane(message)) {
-      return callback("Profanity is not allowed...")
-    }
-    socket.broadcast.emit("userMessage", message)
-    callback()
-  })
-
-  socket.on("disconnect", () => {
-    socket.emit("welcome", "Goodbye!")
-    userCount--
-    io.emit(
-      "serverMessage",
-      `A user has left the room... ${userCount} users remain.`
-    )
-  })
-
-  socket.on("sendLocation", (location, callback) => {
-    socket.broadcast.emit(
-      "locationMessage",
-      `https://google.com/maps?q=${location.latitude},${location.longitude}`,
-      callback()
-    )
-  })
-})
 
 // Routes
 const UserRoutes = require("./routers/user")
@@ -71,6 +37,43 @@ app.get("", (req, res) => {
   res.render("index", {
     title: "Chat App",
     creator: "Gerald Downey"
+  })
+})
+
+io.on("connection", socket => {
+  socket.emit("serverMessage", "Welcome!")
+  userCount++
+  socket.broadcast.emit(
+    "serverMessage",
+    `A new user has entered the room! ${userCount} users present.`
+  )
+
+  socket.on("sendMessage", (message, callback) => {
+    const filter = new Filter()
+    if (filter.isProfane(message)) {
+      return callback("Profanity is not allowed...")
+    }
+    socket.broadcast.emit("userMessage", generateMessage(message))
+    callback()
+  })
+
+  socket.on("disconnect", () => {
+    socket.emit("welcome", "Goodbye!")
+    userCount--
+    io.emit(
+      "serverMessage",
+      `A user has left the room... ${userCount} users remain.`
+    )
+  })
+
+  socket.on("sendLocation", (location, callback) => {
+    socket.broadcast.emit(
+      "locationMessage",
+      generateMessage(
+        `https://google.com/maps?q=${location.latitude},${location.longitude}`
+      ),
+      callback()
+    )
   })
 })
 

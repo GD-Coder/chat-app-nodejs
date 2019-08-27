@@ -7,11 +7,13 @@ const messages = document.querySelector("#messages")
 const serverMessage = document.querySelector("#server-message")
 const errorMessage = document.querySelector("#error")
 
-const messageTemplate = document.querySelector("#message-template").innerHTML
-const locationTemplate = document.querySelector("#location-template").innerHTML
+// const messageTemplate = document.querySelector("#message-template").innerHTML
+// const locationTemplate = document.querySelector("#location-template").innerHTML
 
 socket.on("userMessage", received => {
-  let html = Mustache.render(received + "</br>", messageTemplate)
+  let html = `<p class="message-text">${
+    received.text
+  }</p><br><p class="date-text">${moment(received.createdAt).format("lll")}</>`
   messages.insertAdjacentHTML("beforeEnd", html)
 })
 
@@ -20,7 +22,11 @@ socket.on("serverMessage", message => {
 })
 
 socket.on("locationMessage", location => {
-  let html = Mustache.render(location + "</br>", locationTemplate)
+  let html = `<a href="${
+    location.text
+  }" target="_blank" class="location-link">${
+    location.text
+  }</a><br><p class="date-text">${moment(location.createdAt).format("lll")}</>`
   messages.insertAdjacentHTML("afterBegin", html)
 })
 

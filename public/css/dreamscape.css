@@ -63,6 +63,19 @@
   text-align: center;
 }
 
+#messages {
+  height: 150px;
+  width: 100%;
+  border: 1px solid grey;
+  overflow-y: scroll;
+}
+
+.date-text {
+  font-size: 10px;
+  position: relative;
+  bottom: 25px;
+}
+
 /* Button CSS */
 
 #reply-button {
