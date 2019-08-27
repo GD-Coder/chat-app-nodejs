@@ -10,7 +10,7 @@ const errorMessage = document.querySelector("#error")
 socket.on("userMessage", received => {
   let html = `<p class="message-text">${
     received.text
-  }</p><br><p class="date-text">${moment(received.createdAt).format("lll")}</>`
+  }</p><br><p class="date-text">${moment(received.createdAt).format("lll")}</p>`
   messages.insertAdjacentHTML("beforeEnd", html)
 })
 
@@ -21,7 +21,7 @@ socket.on("serverMessage", message => {
 socket.on("locationMessage", location => {
   let html = `<a href="${
     location.text
-  }" target="_blank" class="location-link">My Current Location</a><br><p class="date-text">${moment(
+  }" target="_blank" class="message-text location-link">My Current Location</a><br><p class="date-text">${moment(
     location.createdAt
   ).format("lll")}</p>`
   messages.insertAdjacentHTML("afterBegin", html)
