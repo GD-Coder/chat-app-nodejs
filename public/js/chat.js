@@ -7,9 +7,6 @@ const messages = document.querySelector("#messages")
 const serverMessage = document.querySelector("#server-message")
 const errorMessage = document.querySelector("#error")
 
-// const messageTemplate = document.querySelector("#message-template").innerHTML
-// const locationTemplate = document.querySelector("#location-template").innerHTML
-
 socket.on("userMessage", received => {
   let html = `<p class="message-text">${
     received.text
@@ -24,9 +21,9 @@ socket.on("serverMessage", message => {
 socket.on("locationMessage", location => {
   let html = `<a href="${
     location.text
-  }" target="_blank" class="location-link">${
-    location.text
-  }</a><br><p class="date-text">${moment(location.createdAt).format("lll")}</>`
+  }" target="_blank" class="location-link">My Current Location</a><br><p class="date-text">${moment(
+    location.createdAt
+  ).format("lll")}</p>`
   messages.insertAdjacentHTML("afterBegin", html)
 })
 
