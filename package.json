@@ -16,7 +16,7 @@
     "@sendgrid/mail": "^6.4.0",
     "bad-words": "^3.0.3",
     "bcrypt": "^3.0.6",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "hbs": "^4.0.4",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.3.0",
